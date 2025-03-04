@@ -96,10 +96,6 @@ class Channel {
         void setLimit(int limit);
         bool hasLimit() const;
         bool isFull() const;
-
-        // Transfer file bonus
-        void uploadFile(const std::string &path);
-        void downloadFile(const std::string &filename);
 };
 
 #endif

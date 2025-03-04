@@ -3,9 +3,6 @@
 
 # include <string>
 
-/**
- * Generic exception class for the IRC server.
- */
 class IRCException : public std::exception {
     private:
         std::string _errorCode;

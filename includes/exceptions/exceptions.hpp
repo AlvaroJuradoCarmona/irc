@@ -34,41 +34,28 @@
 # define ERR_KEYSET(channel) (channel) + " :Channel key already set"
 # define ERR_UNKOWN_MODE(modeChar) (modeChar) + " :is unknown mode char to me"
 
-//Bonus
-# define ERR_CANNOT_OPEN_STREAM ":Cannot open stream"
-# define ERR_CANNOT_UPLOAD_FILE(filename) ":Cannot upload file" + (filename)
-# define ERR_CANNOT_DOWNLOAD_FILE(filename) ":Cannot download file" + (filename)
-
 // ==================================================================================
 
-/**
- * This exception is thrown when an user attempts to register with the server when it is already registered.
- */
 class AlreadyRegisteredException : public IRCException {
     public:
         AlreadyRegisteredException() : IRCException("462", ERR_ALREADY_REGISTERED) {}
 };
 
 /**
- * This exception is thrown when a nickname is erroneous. (Invalid characters, so long, etc.)
+ * This exception is thrown when Invalid characters or is so long.
  */
 class ErroneousNicknameException : public IRCException {
     public:
         ErroneousNicknameException(const std::string &nickname) : IRCException("432", ERR_ERRONEUS_NICKNAME(nickname)) {}
 };
 
-/**
- * This exception is thrown when a command is missing parameters.
- */
+
 class NeedMoreParamsException : public IRCException {
     public:
         NeedMoreParamsException(const std::string &command) : IRCException("461", ERR_NEED_MORE_PARAMS(command)) {}
 };
 
-/**
- * This exception is thrown when a nickname is already in use.
- * It is thrown when a client tries to change their nickname to one that is already in use.
- */
+
 class NicknameInUseException : public IRCException {
     public:
         NicknameInUseException(const std::string &nickname) : IRCException("433", ERR_NICKNAME_IN_USE(nickname)) {}
@@ -226,32 +213,6 @@ class UnknownCommandException : public IRCException {
 class KeySetException : public IRCException {
     public:
         KeySetException(const std::string &channel) : IRCException("467", ERR_KEYSET(channel)) {}
-};
-
-/**
- * This exception is thrown when the user tries to open a stream that cannot be opened.
- */
-class CannotOpenStreamException : public IRCException {
-    public:
-        CannotOpenStreamException() : IRCException("493", ERR_CANNOT_OPEN_STREAM) {}
-};
-
-/**
- * This exception is thrown when the user tries to upload a file and its fail.
- */
-class CannotUploadFileException : public IRCException {
-    public:
-        CannotUploadFileException(const std::string &filename)
-            : IRCException("494", ERR_CANNOT_UPLOAD_FILE(filename)) {}
-};
-
-/**
- * This exception is thrown when the user tries to download a file and its fail.
- */
-class CannotDownloadFileException : public IRCException {
-    public:
-        CannotDownloadFileException(const std::string &filename)
-            : IRCException("495", ERR_CANNOT_DOWNLOAD_FILE(filename)) {}
 };
 
 #endif
