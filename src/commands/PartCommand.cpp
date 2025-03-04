@@ -1,21 +1,7 @@
 #include "PartCommand.hpp"
 
-/**
- * Constructs a new PartCommand.
- * 
- * @param channels The vector of channels to be left.
- */
 PartCommand::PartCommand(const std::vector<std::string> channels) : ACommand(true), _channels(channels) {}
 
-/**
- * Executes the command PART.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- * @throws `NotOnChannelException` if the user is not on the channel.
- * @throws `NoSuchChannelException` if the channel does not exist.
- * 
- */
 void PartCommand::execute(int clientFd) {
     Server &server = Server::getInstance();
     User *user = server.getUserByFd(clientFd);

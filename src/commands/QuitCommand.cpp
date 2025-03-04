@@ -1,18 +1,8 @@
 #include "QuitCommand.hpp"
 
-/**
- * QuitCommand message constructor.
- * 
- * @param message The message
- */
 QuitCommand::QuitCommand(const std::string &message) : ACommand(false), _message(message) {}
 
-/**
- * Execute the command QUIT.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- */
+
 void QuitCommand::execute(int clientFd) {
     Server &server = Server::getInstance();
     User *user = server.getUserByFd(clientFd);

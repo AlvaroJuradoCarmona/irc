@@ -1,20 +1,11 @@
 #include "NickCommand.hpp"
 
-/**
- * NickCommand nickname constructor.
- * 
- * @param nickname The nickname
- */
 NickCommand::NickCommand(const std::string& nickname) : ACommand(false), _nickname(nickname) {}
 
 /**
- * Execute the command NICK.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- * @throws `NoNicknameGivenException` If the nickname is empty
- * @throws `ErroneousNicknameException` If the nickname is too long or invalid
- * @throws `NicknameInUseException` If the nickname is already in use and the user is registered
+ * NoNicknameGivenException If the nickname is empty
+ * ErroneousNicknameException If the nickname is too long or invalid
+ * NicknameInUseException If the nickname is already in use and the user is registered
  * 
  */
 void NickCommand::execute(int clientFd) {
@@ -50,12 +41,6 @@ void NickCommand::execute(int clientFd) {
         user->makeRegistration();
 }
 
-/**
- * Check if the nickname is valid.
- * A nickname is valid if it contains only alphanumeric characters and underscores.
- * 
- * @return `true` if the nickname is valid, `false` otherwise
- */
 bool NickCommand::isValidNickname() const {
     for (std::string::const_iterator it = this->_nickname.begin(); it != this->_nickname.end(); ++it)
         if (!std::isalnum(*it) && *it != '_' )

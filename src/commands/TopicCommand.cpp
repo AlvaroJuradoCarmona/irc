@@ -1,29 +1,10 @@
 #include "TopicCommand.hpp"
 
-/**
- * Constructs a new TopicCommand.
- * 
- * @param channel The channel where the topic will be requested
- */
 TopicCommand::TopicCommand(Channel *channel) : ACommand(true), _channel(channel), _topic(NONE), _newTopicProvided(false) {}
 
-/**
- * Constructs a new TopicCommand.
- * 
- * @param channel The channel where the topic will be set or removed
- * @param topic The new topic of the channel
- */
 TopicCommand::TopicCommand(Channel *channel, const std::string& topic)
     : ACommand(true), _channel(channel), _topic(topic), _newTopicProvided(true) {}
 
-/**
- * Executes the command TOPIC.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- * @throws `NotOnChannelException` if the user is not on the channel
- * @throws `ChanOPrivsNeededException` if the user is not an operator of the channel
- */
 void TopicCommand::execute(int clientFd) {
     Server &server = Server::getInstance();
     const User *user = server.getUserByFd(clientFd);

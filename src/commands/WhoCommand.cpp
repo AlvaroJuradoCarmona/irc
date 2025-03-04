@@ -1,26 +1,11 @@
 #include "WhoCommand.hpp"
 
-/**
- * Command WHO default constructor
- * 
- */
 WhoCommand::WhoCommand() : ACommand(true), _query(NONE), _hasOperatorFlag(false) {}
 
-/**
- * Command WHO constructor
- * 
- * @param query The query to search for
- * @param hasOperatorFlag Whether to only show operator users
- */
 WhoCommand::WhoCommand(const std::string &query, const bool hasOperatorFlag)
     : ACommand(true), _query(query), _hasOperatorFlag(hasOperatorFlag) {}
 
-/**
- * Gets the result of the WHO command for a channel given
- * 
- * @param clientFd The socket file descriptor of the client
- * @param channel The channel to get the query of
- */
+
 void WhoCommand::getQueryOfChannel(int clientFd, const Channel &channel) {
     const std::vector<User *> &users = channel.getUsers();
     std::vector<User *>::const_iterator it;
@@ -40,11 +25,6 @@ void WhoCommand::getQueryOfChannel(int clientFd, const Channel &channel) {
     }
 }
 
-/**
- * Executes the command WHO
- * 
- * @param clientFd The socket file descriptor of the client
- */
 void WhoCommand::execute(int clientFd) {
     Server &server = Server::getInstance();
 	std::string nickname = server.getUserByFd(clientFd)->getNickname();

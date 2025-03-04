@@ -1,21 +1,8 @@
 #include "UpCommand.hpp"
 
-/**
- * UpCommand constructor.
- * 
- * @param channelName The channel name
- * @param path The path of the file to upload
- */
 UpCommand::UpCommand(const std::string& channelName, const std::string& path)
     : ACommand(true), _channelName(channelName), _path(path) {}
 
-/**
- * Execute the command UP.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- * @throws `NotOnChannelException` If the user is not on the channel where it is trying to download the file.
- */
 void UpCommand::execute(int clientFd) {
     Server &server = Server::getInstance();
     User *me = server.getUserByFd(clientFd);

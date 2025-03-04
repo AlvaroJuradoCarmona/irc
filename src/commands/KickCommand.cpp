@@ -1,23 +1,12 @@
 #include "KickCommand.hpp"
 
-/**
- * Construct a new KickCommand.
- * 
- * @param channels The channels to kick the users from
- * @param users The users to kick
- * @param comment The comment for the kick
- */
 KickCommand::KickCommand(const std::vector<std::string> &channels, const std::vector<std::string> &users, const std::string &comment)
     : ACommand(true), _channels(channels), _users(users), _comment(comment) {}
 
 /**
- * Executes the command KICK.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- * @throws `NotOnChannelException` If the user is not on the channel
- * @throws `ChanOPrivsNeededException` If the user is not an operator of the channel
- * @throws `NoSuchChannelException` If the channel does not exist
+ * NotOnChannelException If the user is not on the channel
+ * ChanOPrivsNeededException If the user is not an operator of the channel
+ * NoSuchChannelException If the channel does not exist
  */
 void KickCommand::execute(int clientFd) {
 
@@ -57,14 +46,7 @@ void KickCommand::execute(int clientFd) {
 }
 
 /**
- * Kicks a user from a channel.
- * 
- * @param channel The channel to kick the user from
- * @param user The user that is kicking
- * @param kickedUser The user to kick
- * @param comment The comment for the kick
- * 
- * @throws `UserNotInChannelException` If the user is not in the channel
+ * UserNotInChannelException If the user is not in the channel
 */
 void KickCommand::kickUserFromChannel(Channel &channel, const User &me, const std::string &kickedUser, const std::string &comment) {
     Server &server = Server::getInstance();

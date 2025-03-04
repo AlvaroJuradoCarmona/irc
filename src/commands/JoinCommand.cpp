@@ -1,20 +1,8 @@
 #include "JoinCommand.hpp"
 
-/**
- * Constructs a new JoinCommand.
- * 
- * @param channels The map of channels to be joined.
- */
 JoinCommand::JoinCommand(const std::map<std::string, std::string> channels)
     : ACommand(true), _channels(channels) {}
 
-/**
- * Sends the join message and responses to the client.
- * 
- * @param clientFd The socket file descriptor of the client
- * @param channel The channel to send the message to
- * 
- */
 void JoinCommand::sendMessages(int clientFd, const Channel &channel) const {
     Server &server = Server::getInstance();
     User *user = server.getUserByFd(clientFd);
@@ -34,16 +22,12 @@ void JoinCommand::sendMessages(int clientFd, const Channel &channel) const {
 }
 
 /**
- * Executes the command JOIN.
- * 
- * @param clientFd The socket file descriptor of the client
- * 
- * @throws `BadChannelMaskException` If the channel mask is invalid
- * @throws `TooManyChannelsException` If the user is in too many channels
- * @throws `InviteOnlyChanException` If the channel is invite-only
- * @throws `BadChannelKeyException` If the channel key is incorrect
- * @throws `ChannelIsFullException` If the channel is full
- * @throws `UserOnChannelException` If the user is already on the channel
+ * BadChannelMaskException If the channel mask is invalid
+ * TooManyChannelsException If the user is in too many channels
+ * InviteOnlyChanException If the channel is invite-only
+ * BadChannelKeyException If the channel key is incorrect
+ * ChannelIsFullException If the channel is full
+ * UserOnChannelException If the user is already on the channel
  * 
  */
 void JoinCommand::execute(int clientFd) {
