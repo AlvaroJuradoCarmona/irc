@@ -26,12 +26,6 @@
 # include "ServerException.hpp"
 # include "Utils.hpp"
 
-# define SUCCESS 0
-# define EXIT 1
-
-# define MIN_PORT 1
-# define MAX_PORT 65535
-
 # define DEFAULT_PORT "6667"
 # define DEFAULT_PASS "1111"
 
@@ -47,9 +41,6 @@ class Channel;
 
 class User;
 
-/**
- * A class that represents the server.
- */
 class Server {
 
     private:

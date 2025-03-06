@@ -3,10 +3,6 @@
 
 # include "Server.hpp"
 
-/**
- * An ACommand implementation that is responsible for the leaving of a channel.
- * 
- */
 class PartCommand : public ACommand {
     private:
         const std::vector<std::string> _channels;

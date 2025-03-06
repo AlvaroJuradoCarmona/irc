@@ -3,7 +3,7 @@
 int main(int argc, char **argv) {
     if (argc != 3) {
         std::cerr << INVALID_ARGS << std::endl;
-        return EXIT;
+        return 1;
     }
 
     try {
@@ -16,5 +16,5 @@ int main(int argc, char **argv) {
         std::cerr << e.what() << '\n';
     }
     Server::deleteServer();
-    return SUCCESS;
+    return 0;
 }

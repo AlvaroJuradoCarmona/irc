@@ -5,10 +5,6 @@
 
 # define MAX_NICKNAME_SIZE 9
 
-/**
- * An ACommand implementation that is responsible for setting the nickname of an user.
- * 
-*/
 class NickCommand : public ACommand {
     private:
         const std::string _nickname;

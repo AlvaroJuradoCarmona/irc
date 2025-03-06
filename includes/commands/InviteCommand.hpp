@@ -3,10 +3,6 @@
 
 # include "Server.hpp"
 
-/**
- * An ACommand implementation that is responsible for inviting a user to a channel.
- * 
- */
 class InviteCommand : public ACommand {
     private:
         const std::string _nickname;

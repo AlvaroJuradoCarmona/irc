@@ -3,9 +3,6 @@
 
 # include "Server.hpp"
 
-/**
- * An ACommand implementation that is responsible for sending a notice to a user or channel.
- */
 class NoticeCommand : public ACommand {
     private:
         const std::vector<std::string> _receivers;

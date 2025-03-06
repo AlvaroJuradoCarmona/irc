@@ -7,10 +7,6 @@ class Channel;
 
 class User;
 
-/**
- * An ACommand implementation that is responsible for the kicking of users on channels.
- * 
- */
 class KickCommand : public ACommand {
     private:
         const std::vector<std::string>  _channels;

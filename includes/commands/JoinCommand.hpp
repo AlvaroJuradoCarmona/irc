@@ -5,10 +5,6 @@
 
 class Channel;
 
-/**
- * An ACommand implementation that is responsible for the binding and creation of a channel.
- * 
- */
 class JoinCommand : public ACommand {
     private:
         const std::map<std::string, std::string> _channels; //<name, password>

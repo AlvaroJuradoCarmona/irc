@@ -14,9 +14,6 @@
 # define RECV_EXPT "[ERROR] Unable to receive message."
 # define SEND_EXPT "[ERROR] Unable to send message."
 
-/**
- * An exception that is thrown when a server fails.
- */
 class ServerException : public std::exception {
     private:
         std::string _message;

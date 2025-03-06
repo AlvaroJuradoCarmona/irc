@@ -61,9 +61,7 @@ class NicknameInUseException : public IRCException {
         NicknameInUseException(const std::string &nickname) : IRCException("433", ERR_NICKNAME_IN_USE(nickname)) {}
 };
 
-/**
- * This exception is thrown when a nickname is not given in a command that requires one.
- */
+
 class NoNicknameGivenException : public IRCException {
     public:
         NoNicknameGivenException() : IRCException("431", ERR_NO_NICKNAME_GIVEN) {}
@@ -77,17 +75,13 @@ class NotRegisteredException : public IRCException {
         NotRegisteredException() : IRCException("451", ERR_NOT_REGISTERED) {}
 };
 
-/**
- * This exception is thrown when a password is incorrect.
- */
+
 class PasswordMismatchException : public IRCException {
     public:
         PasswordMismatchException() : IRCException("464", ERR_PASSWD_MISMATCH) {}
 };
 
-/**
- * This exception is thrown when an user attemps to join a channel that is invite-only and it was not invited.
- */
+
 class InviteOnlyChanException : public IRCException {
     public:
         InviteOnlyChanException(const std::string &channelName) : IRCException("473", ERR_INVITE_ONLY_CHAN(channelName)) {}
@@ -101,9 +95,6 @@ class BadChannelKeyException : public IRCException {
         BadChannelKeyException(const std::string &channelName) : IRCException("475", ERR_BAD_CHANNEL_KEY(channelName)) {}
 };
 
-/**
- * This exception is thrown when the channel is full
- */
 class ChannelIsFullException : public IRCException {
     public:
         ChannelIsFullException(const std::string &channelName) : IRCException("471", ERR_CHANNEL_IS_FULL(channelName)) {}
@@ -141,17 +132,13 @@ class NoSuchNickException : public IRCException {
         NoSuchNickException(const std::string &nickname) : IRCException("401", ERR_NO_SUCH_NICK(nickname)) {}
 };
 
-/**
- * This exception is thrown when the user is not on the channel.
- */
+
 class NotOnChannelException : public IRCException {
     public:
         NotOnChannelException(const std::string &channelName) : IRCException("442", ERR_NOT_ON_CHANNEL(channelName)) {}
 };
 
-/**
- * This exception is thrown when the user invited is already on the channel.
- */
+
 class UserOnChannelException : public IRCException {
     public:
         UserOnChannelException(const std::string &nickname, const std::string &channelName)
@@ -182,9 +169,7 @@ class BadChannelMaskException : public IRCException {
         BadChannelMaskException(const std::string &channelName) : IRCException("476", ERR_BAD_CHAN_MASK(channelName)) {}
 };
 
-/**
- * This exception is thrown when the user is not in the channel.
- */
+
 class UserNotInChannelException : public IRCException {
     public:
         UserNotInChannelException(const std::string &nickname, const std::string &channelName)
@@ -199,9 +184,7 @@ class UnknownModeException : public IRCException {
         UnknownModeException(const std::string &modeChar) : IRCException("472", ERR_UNKOWN_MODE(modeChar)) {}
 };
 
-/**
- * This exception is thrown when the user tries to launch an unknown command.
- */
+
 class UnknownCommandException : public IRCException {
     public:
         UnknownCommandException(const std::string &command) : IRCException("421", ERR_UNKNOWN_COMMAND(command)) {}

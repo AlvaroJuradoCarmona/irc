@@ -19,9 +19,6 @@
 # define FOLDER_PRIVILEGES 0777
 class User;
 
-/**
- * A class that represents the channels of the server.
-*/
 class Channel {
     private:
         std::string                 _name;

@@ -7,9 +7,6 @@
 
 class Channel;
 
-/**
- * A class that represents an user.
- */
 class User {
     private:
         int                     _fd;

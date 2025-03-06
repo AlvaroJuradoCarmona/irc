@@ -4,9 +4,6 @@
 # include <iostream>
 # include <string>
 
-/**
- * A class that is responsible for logging messages.
- */
 class Logger {
     private:
         Logger();

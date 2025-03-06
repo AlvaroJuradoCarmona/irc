@@ -3,9 +3,6 @@
 
 # include "Server.hpp"
 
-/**
- * An ACommand implementation that is responsible for setting the username data of an user.
- */
 class UserCommand : public ACommand {
     private:
         const std::string _username;

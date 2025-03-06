@@ -1,10 +1,6 @@
 #ifndef UTILS_HPP
 # define UTILS_HPP
 
-/**
- * A file that contains utility functions that are used along the project.
-*/
-
 # include <sstream>
 # include <vector>
 

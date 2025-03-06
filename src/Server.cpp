@@ -8,7 +8,7 @@ bool Server::isValidPort(const std::string &port) const {
             return false;
     }
     int portNum = std::atoi(port.c_str());
-    return portNum >= MIN_PORT && portNum <= MAX_PORT;
+    return portNum >= 1 && portNum <= 65535;
 }
 
 Server::Server(const std::string port, const std::string password) : _password(password), _signalReceived(false) {

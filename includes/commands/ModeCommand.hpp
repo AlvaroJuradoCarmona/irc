@@ -3,9 +3,6 @@
 
 # include "Server.hpp"
 
-/**
- * The different modes that a channel can have.
- */
 typedef enum EMode {
     INVITE_ONLY = 'i',
     TOPIC_PROTECTED = 't',
@@ -14,10 +11,6 @@ typedef enum EMode {
     USER_LIMIT = 'l',
 } Mode;
 
-/**
- * An ACommand implementation that is responsible for setting the modes of a channel.
- * 
- */
 class ModeCommand : public ACommand {
     private:
         const bool _plus;

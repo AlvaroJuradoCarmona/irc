@@ -3,9 +3,6 @@
 
 # include <string>
 
-/**
- * An abstract class which represents a command that can be executed by the server.
- */
 class ACommand {
     protected:
         const bool _needsValidation;
