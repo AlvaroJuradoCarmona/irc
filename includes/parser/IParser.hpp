@@ -5,7 +5,6 @@
 
 # include "ACommand.hpp"
 
-# define DOWN "DOWN"
 # define INVITE "INVITE"
 # define JOIN "JOIN"
 # define KICK "KICK"
@@ -17,9 +16,7 @@
 # define PRIVMSG "PRIVMSG"
 # define QUIT "QUIT"
 # define TOPIC "TOPIC"
-# define UP "UP"
 # define USER "USER"
-# define WHO "WHO"
 
 class ACommand;
 

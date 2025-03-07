@@ -15,8 +15,6 @@
 # define NO_LIMIT 0
 # define BELL_CHAR '\a'
 
-# define DOWNLOAD_PATH(channel) "files/" + (channel) + "/"
-# define FOLDER_PRIVILEGES 0777
 class User;
 
 class Channel {
@@ -29,7 +27,6 @@ class Channel {
         std::string                 _topic;
         int                         _limit;
         bool                        _passwordSet;
-        std::map<std::string, std::vector<char> >  _files;
 
         // Modes
         bool    _inviteOnly;

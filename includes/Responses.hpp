@@ -18,9 +18,6 @@ class Channel;
 # define RPL_INVITING(channel, nickname) (channel) + " " + (nickname)
 # define RPL_END_OF_NAMES(channel) (channel) + " :End of NAMES list"
 # define RPL_CHANNEL_MODE_IS(channel, mode, modeParams) (channel) + " " + (mode) + " " + (modeParams)
-# define RPL_WHO_REPLY(channel, user, host, nick, userType, realname) (channel) + " " + (user) + " " + (host) + " " + SERVER_NAME + " " + (nick) + " H" + (userType) + " :0 " + (realname)
-# define RPL_END_OF_WHO(query) (query) + " :End of WHO list"
-# define RPL_DOWNLOAD(filename) ":File " + (filename) + " has been downloaded successfully"
 
 # define USER_ID(nickname, username, hostname) ":" + (nickname) + "!" + (username) + "@" + (hostname)
 
@@ -41,7 +38,6 @@ class Channel;
 # define NOTICE_MSG(destination, message) "NOTICE " + (destination) + " :" + (message)
 # define QUIT_MSG(message) "QUIT :" + (message)
 # define TOPIC_MSG(channelName, topic) "TOPIC " + (channelName) + " " + (topic)
-# define UP_MSG(nickname, filename, channel) "UP " + (nickname) + " " + (filename) + " " + (channel)
 
 /**
  * This class represents the responses to the IRC commands.
@@ -113,29 +109,6 @@ class ChannelModeIsResponse : public Responses {
 };
 
 /**
- * This class represents the response to the Who command request
-*/
-class WhoReplyResponse : public Responses {
-    public:
-        WhoReplyResponse(
-            std::string const &channel,
-            std::string const &nickname,
-            std::string const &username,
-            std::string const &hostname,
-            std::string const &userType,
-            std::string const &realname
-        ): Responses("352", nickname, RPL_WHO_REPLY(channel, username, hostname, nickname, userType, realname)) {}
-};
-
-/**
- * This class represents the response to the end of the Who command request.
-*/
-class EndOfWhoResponse : public Responses {
-    public:
-        EndOfWhoResponse(std::string const &nickname, std::string const &query) : Responses("315", nickname, RPL_END_OF_WHO(query)) {}
-};
-
-/**
  * This class represents the response to the welcome message.
  */
 class WelcomeResponse : public Responses {
@@ -168,11 +141,6 @@ class CreatedResponse : public Responses {
 class MyInfoResponse : public Responses {
     public:
         MyInfoResponse(std::string const &nickname, std::string const &servername) : Responses("004", nickname, RPL_MY_INFO(servername)) {}
-};
-
-class DownloadResponse : public Responses {
-    public:
-        DownloadResponse(std::string const &nickname, std::string const &filename) : Responses("042", nickname, RPL_DOWNLOAD(filename)) {}
 };
 
 #endif

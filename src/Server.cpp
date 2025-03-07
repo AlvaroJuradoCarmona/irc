@@ -268,15 +268,8 @@ void Server::sendMessage(int clientFd, const std::string& message) {
 
     int msgSignal = 0;
     std::string messageToSend = message + std::string("\r\n");
-    
-    // setsocketopt in Mac (+ 0 value on send function) to avoid sending signal SIGPIPE
-    // Same behaviour in Linux with MSG_NOSIGNAL on send function
-    #ifdef __APPLE__
-        int enabled = 1;
-        setsockopt(clientFd, SOL_SOCKET, SO_NOSIGPIPE, (void *) &enabled, sizeof(int));
-    #else
-        msgSignal = MSG_NOSIGNAL;
-    #endif
+    msgSignal = MSG_NOSIGNAL;
+
     if (send(clientFd, messageToSend.c_str(), messageToSend.size(), msgSignal) < 0) {
         handleClientDisconnection(clientFd);
         Logger::debug(SEND_EXPT);

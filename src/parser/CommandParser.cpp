@@ -46,14 +46,6 @@ IParser* CommandParser::getParser(std::string command) {
         return new ModeParser();
     if (command == NOTICE)
         return new NoticeParser();
-#ifdef BONUS
-    if (command == WHO)
-        return new WhoParser();
-    if (command == DOWN)
-        return new DownParser();
-    if (command == UP)
-        return new UpParser();
-#endif
     if (command == NONE)
         throw IgnoreCommandException();
     throw UnknownCommandException(command);
